@@ -1,6 +1,8 @@
 import webpack from 'webpack';
 import 'webpack-dev-server';
-import { NativeFederationTypeScriptHost } from '@module-federation/native-federation-typescript/webpack'
+
+import { FederatedTypesPlugin } from '@module-federation/typescript'
+
 const { ModuleFederationPlugin } = webpack.container;
 
 type Env = {
@@ -29,9 +31,8 @@ const config = (env: Env) => {
           'navbar': 'navbar@http://localhost:3001/remoteEntry.js'
         },
       }),
-      NativeFederationTypeScriptHost({
-        deleteTypesFolder: true,
-        moduleFederationConfig: {
+      new FederatedTypesPlugin({
+        federationConfig: {
           library: { 
             type: 'var', 
             name: 'core'

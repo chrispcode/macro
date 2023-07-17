@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import 'webpack-dev-server';
 
-import { NativeFederationTypeScriptRemote } from '@module-federation/native-federation-typescript/webpack';
+import FederatedTypesPlugin from '@module-federation/typescript';
 
 const { ModuleFederationPlugin } = webpack.container;
 
@@ -42,8 +42,8 @@ const config = (env: Env) => {
           }
         }
       }),
-      NativeFederationTypeScriptRemote({
-        moduleFederationConfig: {
+      new FederatedTypesPlugin({
+        federationConfig: {
           library: { 
             type: 'var', 
             name: 'navbar'

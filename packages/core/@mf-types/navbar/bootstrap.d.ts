@@ -1,2 +1,2 @@
-export * from './compiled-types/bootstrap';
-export { default } from './compiled-types/bootstrap';
+export * from './_types/bootstrap';
+export { default } from './_types/bootstrap';
