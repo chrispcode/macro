@@ -1,0 +1,11 @@
+{
+  "name": "core",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config ./webpack.config.ts"
+  },
+  "author": "Kristiyan Serafimov",
+  "license": "ISC"
+}

@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false
+  },
+  "include": [
+    "core/src/*.ts",
+    "remotes/**/src/*.ts",
+    "remotes/**/src/*.tsx",
+    "hosts/**/src/*.ts",
+    "hosts/**/src/*.tsx"
+  ],
+}
