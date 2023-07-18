@@ -3,7 +3,10 @@ import 'webpack-dev-server';
 
 const config: webpack.Configuration = {
   extends: __dirname + '/webpack.base.ts',
-  mode: 'development'
+  mode: 'development',
+  devServer: {
+    static: './build'
+  }
 }
 
 export default config;

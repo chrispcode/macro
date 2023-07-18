@@ -1,8 +1,7 @@
-
-import Navbar from 'navbar/components';
+import * as navbar from 'navbar/bootstrap';
 
 function bootstrap() {
-  console.log("Running core!")
+  navbar.bootstrap()
 }
 
 export default bootstrap;

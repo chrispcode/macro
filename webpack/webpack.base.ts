@@ -5,11 +5,14 @@ const cwd = process.cwd();
 const config: webpack.Configuration = {
   entry: './src/index.tsx',
   output: {
-    filename: 'main.js',
-    path: cwd + '/dist'
+    publicPath: 'auto',
+    filename: 'index.js',
+    path: cwd + '/build'
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json']
+    extensions: [
+      '.ts', '.tsx', '.js', '.json'
+    ]
   },
   module: {
     rules: [

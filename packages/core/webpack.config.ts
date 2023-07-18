@@ -1,15 +1,23 @@
-import webpack from 'webpack';
 import 'webpack-dev-server';
-
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { FederatedTypesPlugin } from '@module-federation/typescript'
 
 const { ModuleFederationPlugin } = webpack.container;
 
-type Env = {
-  production?: boolean;
+type Federation = ConstructorParameters<
+  typeof ModuleFederationPlugin
+>[0];
+
+const federation: Federation = {
+  name: 'core',
+  filename: 'remoteEntry.js',
+  remotes: {
+    'navbar': 'navbar@http://localhost:3001/remoteEntry.js'
+  },
 }
 
-const config = (env: Env) => {
+const config = (env: { production: boolean }) => {
   return {
     extends: (
       env.production
@@ -20,29 +28,14 @@ const config = (env: Env) => {
       port: 3000,
     },
     plugins: [
-      new ModuleFederationPlugin({
-        library: { 
-          type: 'var', 
-          name: 'core'
-        },
-        name: 'core',
-        filename: 'remoteEntry.js',
-        remotes: {
-          'navbar': 'navbar@http://localhost:3001/remoteEntry.js'
-        },
-      }),
+      new ModuleFederationPlugin(federation),
       new FederatedTypesPlugin({
-        federationConfig: {
-          library: { 
-            type: 'var', 
-            name: 'core'
-          },
-          name: 'core',
-          filename: 'remoteEntry.js',
-          remotes: {
-            'navbar': 'navbar@http://localhost:3001/remoteEntry.js'
-          },
-        }
+        typescriptFolderName: 'types',
+        federationConfig: federation
+      }),
+      new HtmlWebpackPlugin({
+        template: './public/index.html',
+        favicon: './public/favicon.ico'
       })
     ]
   } as webpack.Configuration
