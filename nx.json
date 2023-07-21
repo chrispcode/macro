@@ -1,0 +1,29 @@
+{
+  "targetDefaults": {
+    "dev": {
+      "dependsOn": ["^build"],
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
+    "clean": {
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    }
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build"]
+      }
+    }
+  }
+}

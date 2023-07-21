@@ -3,10 +3,9 @@
   "version": "2.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "dev": "webpack serve --env development --config ./webpack.config.ts",
-    "build": "webpack --env production --config ./webpack.config.ts"
-  },
   "author": "Kristiyan Serafimov",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "navbar": "link:../remotes/navbar/build/types"
+  }
 }

@@ -1,0 +1,29 @@
+{
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "webpack serve -c webpack.ts --env development"
+        ]
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "webpack build -c webpack.ts --env production"
+        ]
+      }
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "rm -rf ./build"
+        ]
+      }
+    }
+  },
+  "implicitDependencies": ["navbar"]
+}

@@ -1,3 +1,3 @@
 import('./bootstrap').then(
-  bootstrap => bootstrap.default()
-)
+  ({ bootstrap }) => bootstrap()
+);

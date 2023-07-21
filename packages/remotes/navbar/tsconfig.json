@@ -1,4 +1,10 @@
 {
   "extends": "../../../tsconfig.json",
-  "include": ["src/*.tsx"]
+  "include": [
+    "src/*.tsx",
+    "webpack.ts"
+  ],
+  "compilerOptions": {
+    "outDir": "build"
+  }
 }

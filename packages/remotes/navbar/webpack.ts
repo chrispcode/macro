@@ -9,10 +9,11 @@ type Federation = ConstructorParameters<
   typeof ModuleFederationPlugin
 >[0];
 
-const federation: Federation = {
+export const federation: Federation = {
   name: 'navbar',
   filename: 'remoteEntry.js',
   exposes: {
+    "./index": "./src/index.tsx",
     "./components": "./src/components",
     "./bootstrap": "./src/bootstrap"
   },
@@ -26,26 +27,22 @@ const federation: Federation = {
   }
 }
 
-const config = (env: { production: boolean }) => {
+const config = () => {
   return {
-    extends: (
-      env.production
-        ? __dirname + '../../../../webpack/webpack.prod.ts'
-        : __dirname + '../../../../webpack/webpack.dev.ts'
-    ),
+    extends: __dirname + '../../../config/webpack/webpack.base.ts',
     devServer: {
       port: 3001,
-      historyApiFallback: true,
     },
     plugins: [
       new ModuleFederationPlugin(federation),
       new FederatedTypesPlugin({
-        typescriptFolderName: 'types',
         federationConfig: federation,
+        typescriptFolderName: 'types',
+        compiler: "tsc"
       }),
       new HtmlWebpackPlugin({
-        template: './public/index.html',
-        favicon: './public/favicon.ico'
+        template: __dirname + '../../../config/public/index.html',
+        favicon: __dirname + '../../../config/public/favicon.ico',
       })
     ]
   } as webpack.Configuration
