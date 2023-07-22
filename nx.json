@@ -2,19 +2,31 @@
   "targetDefaults": {
     "dev": {
       "dependsOn": ["^build"],
+      "executor": "nx:run-commands",
       "options": {
-        "cwd": "{projectRoot}"
+        "cwd": "{projectRoot}",
+        "commands": [
+          "webpack serve -c webpack.ts --env development"
+        ]
       }
     },
     "build": {
       "dependsOn": ["^build"],
+      "executor": "nx:run-commands",
       "options": {
-        "cwd": "{projectRoot}"
+        "cwd": "{projectRoot}",
+        "commands": [
+          "webpack build -c webpack.ts --env production"
+        ]
       }
     },
     "clean": {
+      "executor": "nx:run-commands",
       "options": {
-        "cwd": "{projectRoot}"
+        "cwd": "{projectRoot}",
+        "commands": [
+          "rm -rf ./build"
+        ]
       }
     }
   },

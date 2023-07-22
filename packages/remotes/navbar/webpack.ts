@@ -13,7 +13,6 @@ export const federation: Federation = {
   name: 'navbar',
   filename: 'remoteEntry.js',
   exposes: {
-    "./index": "./src/index.tsx",
     "./components": "./src/components",
     "./bootstrap": "./src/bootstrap"
   },
