@@ -1,6 +1,7 @@
 import 'webpack-dev-server';
 import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+
+import { type ProxyConfigMap } from 'webpack-dev-server';
 
 const { ModuleFederationPlugin } = webpack.container;
 
@@ -12,22 +13,26 @@ export const federation: Federation = {
   name: 'core',
   filename: 'remoteEntry.js',
   remotes: {
-    'navbar': 'navbar@http://localhost:3001/remoteEntry.js'
+    'navbar': 'navbar@/micro/navbar/remoteEntry.js'
   },
 };
+
+export const proxy: ProxyConfigMap = {
+  '/macro/navbar': {
+    target: 'http://localhost:3001',
+    pathRewrite: { "^/macro/navbar": "" }
+  }
+}
 
 const config = () => {
   return {
     extends: __dirname + '../../config/webpack/webpack.base.ts',
     devServer: {
-      port: 3000
+      port: 3000,
+      proxy,
     },
     plugins: [
       new ModuleFederationPlugin(federation),
-      new HtmlWebpackPlugin({
-        template: __dirname + '../../config/public/index.html',
-        favicon: __dirname + '../../config/public/favicon.ico',
-      })
     ].filter(Boolean)
   } as webpack.Configuration
 }

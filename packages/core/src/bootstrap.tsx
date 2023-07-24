@@ -3,11 +3,11 @@ export function bootstrap() {
     navbar: {
       async bootstrap() {
         import('navbar/bootstrap')
-          .then(({ bootstrap }) => {
-            bootstrap()
+          .then((navbar) => {
+            navbar.bootstrap()
           })
           .catch((error) => {
-            console.error('Failed to load Navbar', error);
+            console.error('🙀 Navbar failed to load because', error);
           });
       }
     }

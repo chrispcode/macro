@@ -4,7 +4,4 @@
     "src/*.tsx",
     "webpack.ts"
   ],
-  "compilerOptions": {
-    "outDir": "build"
-  }
 }
