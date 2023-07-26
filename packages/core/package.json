@@ -6,6 +6,6 @@
   "author": "Kristiyan Serafimov",
   "license": "ISC",
   "dependencies": {
-    "navbar": "link:../remotes/navbar/build/types"
+    "navbar": "link:../remotes/navbar/build/types.zip"
   }
 }

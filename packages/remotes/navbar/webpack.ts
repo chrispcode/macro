@@ -1,6 +1,7 @@
 import 'webpack-dev-server';
 import webpack from 'webpack';
-import { FederatedTypesPlugin } from '@module-federation/typescript';
+// import { FederatedTypesPlugin } from '@module-federation/typescript';
+import { NativeFederationTypeScriptRemote } from '@module-federation/native-federation-typescript/webpack';
 
 const { ModuleFederationPlugin } = webpack.container;
 
@@ -33,10 +34,9 @@ const webpackConfig = () => {
     },
     plugins: [
       new ModuleFederationPlugin(federationConfig),
-      new FederatedTypesPlugin({
-        federationConfig,
-        typescriptFolderName: 'types',
-        compiler: "tsc",
+      NativeFederationTypeScriptRemote({
+        moduleFederationConfig: federationConfig,
+        typesFolder: 'types',
       }),
     ]
   } as webpack.Configuration
