@@ -1,5 +1,5 @@
 export function bootstrap() {
-  window.micro = {
+  window.macro = {
     navbar: {
       async bootstrap() {
         import('navbar/bootstrap')

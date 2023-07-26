@@ -1,5 +1,5 @@
 interface Window {
-  micro: {
+  macro: {
     navbar: {
       bootstrap: () => Promise<void>
     }

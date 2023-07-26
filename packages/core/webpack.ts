@@ -13,7 +13,7 @@ export const federation: Federation = {
   name: 'core',
   filename: 'remoteEntry.js',
   remotes: {
-    'navbar': 'navbar@/micro/navbar/remoteEntry.js'
+    'navbar': 'navbar@/macro/navbar/remoteEntry.js'
   },
 };
 
