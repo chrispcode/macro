@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Navbar() {
+  const [count, setCount] = useState(0);
+
   return (
     <div>
-      <h1>Hello</h1>
-      <div>Hello</div>
-      <div>You there</div>
-      <div>You there</div>
-      <div>You there</div>
-      <div>You there</div>
+      <h1>Count is now: {count}</h1>
+      <button onClick={() => setCount(count + 1)}> Up </button>
     </div>
   );
 }
